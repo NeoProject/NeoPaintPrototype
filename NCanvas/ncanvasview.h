@@ -5,10 +5,15 @@
 #include <QWidget>
 #include <QGraphicsView>
 
+class NCanvasScene;
+
 class NCanvasView : public QObject, public QGraphicsView
 {
 public:
-    NCanvasView();
+    NCanvasView(QWidget *parent = nullptr);
+
+public:
+
 };
 
 #endif // NCANVASVIEW_H

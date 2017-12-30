@@ -1,6 +1,8 @@
 #include "ncanvasview.h"
 
-NCanvasView::NCanvasView()
+NCanvasView::NCanvasView(QWidget *parent)
+    : QObject(parent),
+      QGraphicsView(parent)
 {
 
 }
