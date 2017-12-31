@@ -15,6 +15,9 @@ public:
     void setPos(QPointF _pos);
     void setMessage(NStatusMessage *_lab);
 
+public:
+    QImage nImage;
+
     protected:
 //    bool event(QEvent *event) override;
     void paintEvent(QPaintEvent *event) override;

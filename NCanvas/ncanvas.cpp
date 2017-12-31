@@ -5,10 +5,13 @@
 #include <QPaintEvent>
 #include <QLabel>
 #include "../NGadget/nstatusmessage.h"
+#include <QImage>
 
-NCanvas::NCanvas(QWidget *  parent) : QWidget(parent)
+NCanvas::NCanvas(QWidget *  parent)
+    : QWidget(parent)
 {
     setFocus();
+    nImage = QImage(600, 400, QImage::Format_ARGB32_Premultiplied);
 }
 
 void NCanvas::setPos(QPointF _pos)
@@ -46,8 +49,12 @@ void NCanvas::setMessage(NStatusMessage *_lab)
 
 void NCanvas::paintEvent(QPaintEvent *event)
 {
-    QPainter painter(this);
-    painter.drawLine(QPoint(300, 200), nPos);
+    QPainter painter;
+    painter.begin(&nImage);
+    painter.drawPoint(nPos);
+    painter.end();
+    painter.begin(this);
+    painter.drawImage(QRect(0, 0, 600, 400), nImage);
     painter.end();
 }
 
