@@ -35,7 +35,9 @@ SOURCES += \
     NCanvas/ntabwidget.cpp \
     NCanvas/ncanvas.cpp \
     NDockWidget/ndockwidget.cpp \
-    NTool/ncolorcontainer.cpp
+    NTool/ncolorcontainer.cpp \
+    NTool/nlayercontainer.cpp \
+    NGadget/nstatusmessage.cpp
 
 HEADERS += \
         nmainwindow.h \
@@ -48,7 +50,9 @@ HEADERS += \
     NCanvas/ntabwidget.h \
     NCanvas/ncanvas.h \
     NDockWidget/ndockwidget.h \
-    NTool/ncolorcontainer.h
+    NTool/ncolorcontainer.h \
+    NTool/nlayercontainer.h \
+    NGadget/nstatusmessage.h
 
 DISTFILES += \
     README.md

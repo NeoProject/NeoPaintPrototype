@@ -7,6 +7,7 @@
 #include <QGraphicsScene>
 
 class NCanvasView;
+class NCanvas;
 
 class NTabWidget : public QTabWidget
 {
@@ -14,6 +15,7 @@ public:
     explicit NTabWidget(QWidget *parent = nullptr);
 
 public:
+    NCanvas *nCanvas;
     NCanvasView *nView;
     QGraphicsScene nScene;
 };

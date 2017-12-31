@@ -3,11 +3,19 @@
 
 #include <QObject>
 #include <QWidget>
+#include "../NDockWidget/ndockwidget.h"
 
-class NColorContainer
+
+class QColorDialog;
+class QHBoxLayout;
+
+class NColorContainer : public NDockWidget
 {
 public:
-    NColorContainer();
+    explicit NColorContainer(QWidget *parent = nullptr);
+
+public:
+    QHBoxLayout *nLayout;
 };
 
 #endif // NCOLORCONTAINER_H

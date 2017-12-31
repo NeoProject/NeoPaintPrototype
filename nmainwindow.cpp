@@ -3,6 +3,7 @@
 #include "NGadget/nmenubar.h"
 #include "NGadget/ntoolbar.h"
 #include <QLabel>
+#include <NCanvas/ncanvas.h>
 #include "NGadget/nabout.h"
 #include "NCanvas/ntabwidget.h"
 #include <QMenu>
@@ -19,7 +20,7 @@ NMainWindow::NMainWindow(QWidget *parent)
       neoToolBar(new NToolBar(this)),
       neoTabWidget(new NTabWidget(this)),
       neoPrototype(new NDockWidget(this)),
-      neoAbout(new NAbout(tr("Ass we can"))),
+      neoAbout(new NAbout(tr("NeoPaintPrototype"))),
       neoTabletTest(new NTabletTest)
 {
     initWidget();
@@ -49,4 +50,6 @@ void NMainWindow::initConnection()
 
     connect(neoMenuBar->NHelp.About, &QAction::triggered, neoAbout, &NAbout::show);
     connect(neoMenuBar->NHelp.TabletTest, &QAction::triggered, neoTabletTest, &NTabletTest::show);
+
+//    connect(neoTabWidget->nCanvas, &NCanvas::tabletStatusChanged, neoStatusBar, &NStatusBar::changeStatus);
 }

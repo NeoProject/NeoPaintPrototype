@@ -16,8 +16,8 @@ public:
     void paintEvent(QPaintEvent *event) override;
     void tabletEvent(QTabletEvent *event) override;
 
-//signals:
-//    void tabletStatusChanged(int x, int y, qreal pressure);
+signals:
+    void tabletStatusChanged(QPointF &pos, qreal &pressure);
 
 private:
     QPointF nPos;

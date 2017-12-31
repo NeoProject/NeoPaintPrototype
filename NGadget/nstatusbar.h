@@ -5,6 +5,8 @@
 #include <QStatusBar>
 #include <QWidget>
 
+class NStatusMessage;
+
 class NStatusBar : public QStatusBar
 {
     Q_OBJECT
@@ -12,6 +14,12 @@ class NStatusBar : public QStatusBar
 public:
     NStatusBar(QWidget *parent = 0);
     ~NStatusBar();
+
+private:
+    NStatusMessage *nStatusMessage;
+
+public slots:
+    void changeStatus(QPointF pos, qreal pressure);
 };
 
 #endif // NSTATUSBAR_H

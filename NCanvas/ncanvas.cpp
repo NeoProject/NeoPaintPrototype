@@ -4,7 +4,7 @@
 #include <QPainter>
 #include <QPaintEvent>
 
-NCanvas::NCanvas(QWidget *parent) : QWidget(parent)
+NCanvas::NCanvas(QWidget *  parent) : QWidget(parent)
 {
 
 }
@@ -40,12 +40,13 @@ void NCanvas::setPos(QPointF _pos)
 void NCanvas::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    painter.drawLine(QPoint(0, 0), nPos);
+    painter.drawLine(QPoint(300, 200), nPos);
     painter.end();
 }
 
 void NCanvas::tabletEvent(QTabletEvent *event)
 {
     qDebug()<< "received."<< endl;
+    emit tabletStatusChanged(nPos, nPressure);
     update();
 }

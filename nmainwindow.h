@@ -11,6 +11,7 @@ class QMenu;
 class NDockWidget;
 class NAbout;
 class NTabletTest;
+class NColorContainer;
 
 class NMainWindow : public QMainWindow
 {
@@ -30,7 +31,6 @@ private:
 
     NAbout *neoAbout;
     NTabletTest *neoTabletTest;
-
 
     void initWidget();
     void initConnection();

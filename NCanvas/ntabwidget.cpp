@@ -8,12 +8,12 @@ NTabWidget::NTabWidget(QWidget *parent)
     : QTabWidget(parent)
 {
     nView = new NCanvasView(this);
-    NCanvas *nCanvas = new NCanvas;
+    nCanvas = new NCanvas;
     nCanvas->setGeometry(0, 0, 600, 400);
     nView->setReceiver(nCanvas);
     QGraphicsProxyWidget *ass = nScene.addWidget(nCanvas);
     nView->setMirror(ass);
 
     nView->setScene(&nScene);
-    addTab(nView, tr("ass"));
+    addTab(nView, tr("Untitled"));
 }
