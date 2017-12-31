@@ -8,13 +8,15 @@
 #include <QMenu>
 #include <QAction>
 #include "NGadget/ntablettest.h"
+#include "NDockWidget/ndockwidget.h"
 
 NMainWindow::NMainWindow(QWidget *parent)
     : QMainWindow(parent),
       neoStatusBar(new NStatusBar(this)),
       neoMenuBar(new NMenuBar(this)),
       neoToolBar(new NToolBar(this)),
-      neoTabWidget(new NTabWidget(this))
+      neoTabWidget(new NTabWidget(this)),
+      neoPrototype(new NDockWidget(this))
 {
     initWidget();
 }
@@ -30,4 +32,5 @@ void NMainWindow::initWidget()
     setMenuBar(neoMenuBar);
     addToolBar(neoToolBar);
     setCentralWidget(neoTabWidget);
+    addDockWidget(Qt::LeftDockWidgetArea, neoPrototype);
 }
