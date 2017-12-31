@@ -15,5 +15,7 @@ NTabWidget::NTabWidget(QWidget *parent)
     nView->setMirror(ass);
 
     nView->setScene(&nScene);
+    nView->setBackgroundRole(QPalette::Dark);
+    nView->setAlignment(Qt::AlignCenter);
     addTab(nView, tr("Untitled"));
 }

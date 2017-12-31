@@ -4,12 +4,16 @@
 #include <QObject>
 #include <QWidget>
 
+class NStatusMessage;
+class QLabel;
+
 class NCanvas : public QWidget
 {
     Q_OBJECT
 public:
     explicit NCanvas(QWidget *parent = nullptr);
     void setPos(QPointF _pos);
+    void setMessage(NStatusMessage *_lab);
 
     protected:
 //    bool event(QEvent *event) override;
@@ -17,11 +21,12 @@ public:
     void tabletEvent(QTabletEvent *event) override;
 
 signals:
-    void tabletStatusChanged(QPointF &pos, qreal &pressure);
+//    void tabletStatusChanged(QPointF &pos, qreal &pressure);
 
 private:
     QPointF nPos;
     qreal nPressure;
+    NStatusMessage *nStatusMessage;
 
 public slots:
 };

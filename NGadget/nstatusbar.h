@@ -15,11 +15,12 @@ public:
     NStatusBar(QWidget *parent = 0);
     ~NStatusBar();
 
-private:
     NStatusMessage *nStatusMessage;
+private:
+
 
 public slots:
-    void changeStatus(QPointF pos, qreal pressure);
+//    void changeStatus(QPointF pos, qreal pressure);
 };
 
 #endif // NSTATUSBAR_H

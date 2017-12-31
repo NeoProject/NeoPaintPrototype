@@ -3,16 +3,23 @@
 #include <QDebug>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QLabel>
+#include "../NGadget/nstatusmessage.h"
 
 NCanvas::NCanvas(QWidget *  parent) : QWidget(parent)
 {
-
+    setFocus();
 }
 
 void NCanvas::setPos(QPointF _pos)
 {
     nPos = _pos;
     return;
+}
+
+void NCanvas::setMessage(NStatusMessage *_lab)
+{
+    nStatusMessage = _lab;
 }
 
 //bool NCanvas::event(QEvent *event)
@@ -46,7 +53,10 @@ void NCanvas::paintEvent(QPaintEvent *event)
 
 void NCanvas::tabletEvent(QTabletEvent *event)
 {
-    qDebug()<< "received."<< endl;
-    emit tabletStatusChanged(nPos, nPressure);
+    nPressure = event->pressure();
+    qDebug()<< nPressure * 2048<< endl;
+    nStatusMessage->setText("X: " + QString::number(nPos.x()) + " Y: " + QString::number(nPos.y()) + " Pressure: " + QString::number(nPressure * 2048));
+//    emit tabletStatusChanged(nPos, nPressure);
     update();
 }
+

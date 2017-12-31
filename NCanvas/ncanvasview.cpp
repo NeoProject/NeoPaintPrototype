@@ -5,13 +5,22 @@
 #include <QGraphicsProxyWidget>
 #include "ncanvas.h"
 #include <QWheelEvent>
+#include <QScrollBar>
+#include <QScrollArea>
+#include <QTransform>
 
 NCanvasView::NCanvasView(QWidget *parent)
     : QObject(parent),
       QGraphicsView(parent),
-      nScale(1.0)
-{
+      verticalScroll(verticalScrollBar()),
+      horizontalScroll(horizontalScrollBar()),
+      nScale(1),
+      nRotation(0)
 
+{
+//    verticalScroll->setMaximum(100);
+//    setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+//    setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
 }
 
 void NCanvasView::setReceiver(QWidget *_receiver)
@@ -42,11 +51,30 @@ void NCanvasView::tabletEvent(QTabletEvent *event)
 
 void NCanvasView::wheelEvent(QWheelEvent *event)
 {
+//    qDebug()<< verticalScroll->value();
     if (event->delta() > 0) {
-        nScale *= 1.25;
-        nMirror->setScale(nScale);
+        transform.scale(1.25, 1.25);
     } else {
-        nScale *= 0.8;
-        nMirror->setScale(nScale);
+        transform.scale(0.8, 0.8);
+    }
+    setTransform(transform);
+}
+
+void NCanvasView::keyPressEvent(QKeyEvent *event)
+{
+
+    if (event->modifiers() == Qt::ControlModifier) {
+        switch (event->key()) {
+        case Qt::Key_Equal:
+            transform.rotate(15);
+            setTransform(transform);
+            break;
+        case Qt::Key_Minus:
+            transform.rotate(-15);
+            setTransform(transform);
+            break;
+        default:
+            break;
+        }
     }
 }

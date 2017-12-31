@@ -28,6 +28,8 @@ NMainWindow::NMainWindow(QWidget *parent)
     setDockNestingEnabled(true);
     neoPrototype->setAllowedAreas(Qt::LeftDockWidgetArea);
     neoPrototype->setMinimumWidth(300);
+
+    neoTabWidget->nCanvas->setMessage(neoStatusBar->nStatusMessage);
 }
 
 NMainWindow::~NMainWindow()
