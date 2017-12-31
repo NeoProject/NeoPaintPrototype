@@ -32,7 +32,8 @@ SOURCES += \
     NGadget/nabout.cpp \
     NGadget/ntablettest.cpp \
     NCanvas/ncanvasview.cpp \
-    NCanvas/ntabwidget.cpp
+    NCanvas/ntabwidget.cpp \
+    NCanvas/ncanvas.cpp
 
 HEADERS += \
         nmainwindow.h \
@@ -42,4 +43,5 @@ HEADERS += \
     NGadget/nabout.h \
     NGadget/ntablettest.h \
     NCanvas/ncanvasview.h \
-    NCanvas/ntabwidget.h
+    NCanvas/ntabwidget.h \
+    NCanvas/ncanvas.h

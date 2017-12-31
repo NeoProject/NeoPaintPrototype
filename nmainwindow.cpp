@@ -7,6 +7,7 @@
 #include "NCanvas/ntabwidget.h"
 #include <QMenu>
 #include <QAction>
+#include "NGadget/ntablettest.h"
 
 NMainWindow::NMainWindow(QWidget *parent)
     : QMainWindow(parent),
