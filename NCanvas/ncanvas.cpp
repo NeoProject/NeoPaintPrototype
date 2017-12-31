@@ -2,6 +2,7 @@
 #include <QTabletEvent>
 #include <QDebug>
 #include <QPainter>
+#include <QPaintEvent>
 
 NCanvas::NCanvas(QWidget *parent) : QWidget(parent)
 {
@@ -14,15 +15,37 @@ void NCanvas::setPos(QPointF _pos)
     return;
 }
 
-bool NCanvas::event(QEvent *event)
+//bool NCanvas::event(QEvent *event)
+//{
+//    if (event->type() != QEvent::TabletPress && event->type() != QEvent::TabletMove && event->type() != QEvent::TabletRelease)
+//        return false;
+
+//    QTabletEvent *nTabletEvent = static_cast<QTabletEvent *>(event);
+
+//    switch (event->type()) {
+//    case QEvent::TabletMove:
+//        nPressure = nTabletEvent->pressure();
+//        qDebug()<< "paint?"<< endl;
+//        break;
+
+//    default:
+//        break;
+//    }
+//    event->accept();
+//    repaint();
+//    qDebug()<< "update?"<< endl;
+//    QWidget::event(event);
+//}
+
+void NCanvas::paintEvent(QPaintEvent *event)
 {
-    QTabletEvent *nTabletEvent = static_cast<QTabletEvent *>(event);
-    switch (event->type()) {
-    case QEvent::TabletMove:
-        qDebug()<< nPos<< endl;
-        qDebug()<< nTabletEvent->pressure()<< endl;
-        break;
-    default:
-        break;
-    }
+    QPainter painter(this);
+    painter.drawLine(QPoint(0, 0), nPos);
+    painter.end();
+}
+
+void NCanvas::tabletEvent(QTabletEvent *event)
+{
+    qDebug()<< "received."<< endl;
+    update();
 }

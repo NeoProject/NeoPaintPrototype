@@ -34,7 +34,8 @@ SOURCES += \
     NCanvas/ncanvasview.cpp \
     NCanvas/ntabwidget.cpp \
     NCanvas/ncanvas.cpp \
-    NDockWidget/ndockwidget.cpp
+    NDockWidget/ndockwidget.cpp \
+    NTool/ncolorcontainer.cpp
 
 HEADERS += \
         nmainwindow.h \
@@ -46,7 +47,8 @@ HEADERS += \
     NCanvas/ncanvasview.h \
     NCanvas/ntabwidget.h \
     NCanvas/ncanvas.h \
-    NDockWidget/ndockwidget.h
+    NDockWidget/ndockwidget.h \
+    NTool/ncolorcontainer.h
 
 DISTFILES += \
     README.md

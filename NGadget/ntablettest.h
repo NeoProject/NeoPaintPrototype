@@ -15,11 +15,15 @@ public:
 
 protected:
     void tabletEvent(QTabletEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
 
 private:
     QFormLayout *nTabletTestLayout;
     QLabel *xPos, *yPos;
     QLabel *nTabletPressure, *nTabletRotation;
+
+    int x, y;
+    qreal pressure;
 
 signals:
 

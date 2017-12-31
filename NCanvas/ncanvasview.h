@@ -16,10 +16,12 @@ public:
     void setNeoScene(QGraphicsScene *scene);
 protected:
     void tabletEvent(QTabletEvent *event) override;
+    void wheelEvent(QWheelEvent *event) override;
 
 public:
 
 private:
+    qreal nScale;
     QWidget *receiver;
     QGraphicsScene *nScene;
     QGraphicsProxyWidget *nMirror;

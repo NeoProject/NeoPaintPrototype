@@ -3,6 +3,7 @@
 #include <QTabletEvent>
 #include <QLabel>
 #include <QObject>
+#include <QPainter>
 
 NTabletTest::NTabletTest(QWidget *parent)
     : QWidget(parent),
@@ -22,6 +23,10 @@ NTabletTest::NTabletTest(QWidget *parent)
 
 void NTabletTest::tabletEvent(QTabletEvent *event)
 {
+    x = event->x();
+    y = event->y();
+    pressure = event->pressure();
+
     switch (event->type()) {
     case QEvent::TabletMove:
         xPos->setText(QString::number(event->x(), 10));
@@ -38,4 +43,13 @@ void NTabletTest::tabletEvent(QTabletEvent *event)
     default:
         break;
     }
+    event->accept();
+    update();
+}
+
+void NTabletTest::paintEvent(QPaintEvent *event)
+{
+    QPainter painter(this);
+    painter.drawLine(QPoint(180, 100), QPoint(x, y));
+    painter.end();
 }

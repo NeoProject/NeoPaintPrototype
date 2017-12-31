@@ -9,6 +9,8 @@
 #include <QAction>
 #include "NGadget/ntablettest.h"
 #include "NDockWidget/ndockwidget.h"
+#include "NGadget/nabout.h"
+#include "NGadget/ntablettest.h"
 
 NMainWindow::NMainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -16,9 +18,15 @@ NMainWindow::NMainWindow(QWidget *parent)
       neoMenuBar(new NMenuBar(this)),
       neoToolBar(new NToolBar(this)),
       neoTabWidget(new NTabWidget(this)),
-      neoPrototype(new NDockWidget(this))
+      neoPrototype(new NDockWidget(this)),
+      neoAbout(new NAbout(tr("Ass we can"))),
+      neoTabletTest(new NTabletTest)
 {
     initWidget();
+    initConnection();
+    setDockNestingEnabled(true);
+    neoPrototype->setAllowedAreas(Qt::LeftDockWidgetArea);
+    neoPrototype->setMinimumWidth(300);
 }
 
 NMainWindow::~NMainWindow()
@@ -33,4 +41,12 @@ void NMainWindow::initWidget()
     addToolBar(neoToolBar);
     setCentralWidget(neoTabWidget);
     addDockWidget(Qt::LeftDockWidgetArea, neoPrototype);
+}
+
+void NMainWindow::initConnection()
+{
+    connect(neoMenuBar->NFile.Close, &QAction::triggered, this, &NMainWindow::close);
+
+    connect(neoMenuBar->NHelp.About, &QAction::triggered, neoAbout, &NAbout::show);
+    connect(neoMenuBar->NHelp.TabletTest, &QAction::triggered, neoTabletTest, &NTabletTest::show);
 }

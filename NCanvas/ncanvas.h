@@ -11,13 +11,17 @@ public:
     explicit NCanvas(QWidget *parent = nullptr);
     void setPos(QPointF _pos);
 
-protected:
-    bool event(QEvent *event) override;
+    protected:
+//    bool event(QEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
+    void tabletEvent(QTabletEvent *event) override;
 
-signals:
+//signals:
+//    void tabletStatusChanged(int x, int y, qreal pressure);
 
 private:
     QPointF nPos;
+    qreal nPressure;
 
 public slots:
 };

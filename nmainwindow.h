@@ -9,6 +9,9 @@ class NMenuBar;
 class NTabWidget;
 class QMenu;
 class NDockWidget;
+class NAbout;
+class NTabletTest;
+
 class NMainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -23,11 +26,14 @@ private:
     NToolBar *neoToolBar;
 
     NDockWidget *neoPrototype;
-
     NTabWidget *neoTabWidget;
 
-    void initWidget();
+    NAbout *neoAbout;
+    NTabletTest *neoTabletTest;
 
+
+    void initWidget();
+    void initConnection();
 };
 
 #endif // NMAINWINDOW_H
