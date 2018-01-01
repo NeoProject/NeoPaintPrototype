@@ -26,10 +26,6 @@ public slots:
     void openFile(const QString &FileName);
     void saveFile(const QString &FileName);
 
-public:
-    QScrollBar *verticalScroll;
-    QScrollBar *horizontalScroll;
-    QScrollArea *nArea;
 
 private:
     QTransform transform;

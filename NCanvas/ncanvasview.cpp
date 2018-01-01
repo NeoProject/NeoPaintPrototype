@@ -11,8 +11,6 @@
 
 NCanvasView::NCanvasView(QWidget *parent)
     : QGraphicsView(parent),
-      verticalScroll(verticalScrollBar()),
-      horizontalScroll(horizontalScrollBar()),
       nScale(1),
       nRotation(0)
 
@@ -54,14 +52,17 @@ void NCanvasView::saveFile(const QString &FileName)
 
 void NCanvasView::tabletEvent(QTabletEvent *event)
 {
+
     QPointF scenePos = mapToScene(event->pos());
     QPointF widgetPos = nMirror->mapFromScene(scenePos);
     static_cast<NCanvas *>(receiver)->setPos(widgetPos);
+    qDebug()<< "ass"<< endl;
     QApplication::sendEvent(receiver, event);
 }
 
 void NCanvasView::wheelEvent(QWheelEvent *event)
 {
+    qDebug()<< "as"<< endl;
 //    qDebug()<< verticalScroll->value();
     if (event->delta() > 0) {
         transform.scale(1.25, 1.25);

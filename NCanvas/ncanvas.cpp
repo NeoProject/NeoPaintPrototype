@@ -61,9 +61,10 @@ void NCanvas::paintEvent(QPaintEvent *event)
 void NCanvas::tabletEvent(QTabletEvent *event)
 {
     nPressure = event->pressure();
-    qDebug()<< nPressure * 2048<< endl;
-    nStatusMessage->setText("X: " + QString::number(nPos.x()) + " Y: " + QString::number(nPos.y()) + " Pressure: " + QString::number(nPressure * 2048));
+//    nStatusMessage->setText("X: " + QString::number(nPos.x()) + " Y: " + QString::number(nPos.y()) + " Pressure: " + QString::number(nPressure * 2048));
 //    emit tabletStatusChanged(nPos, nPressure);
+//    qDebug()<< "here"<< endl;
     update();
+
 }
 

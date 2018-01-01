@@ -27,7 +27,6 @@ void NTabWidget::newCanvas()
 {
     nView.append(new NCanvasView(this));
     nCanvas.append(new NCanvas);
-
     nScene.append(new QGraphicsScene);
 
     nCanvas.back()->setGeometry(0, 0, 600, 400);
