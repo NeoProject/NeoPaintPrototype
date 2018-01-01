@@ -10,8 +10,7 @@
 #include <QTransform>
 
 NCanvasView::NCanvasView(QWidget *parent)
-    : QObject(parent),
-      QGraphicsView(parent),
+    : QGraphicsView(parent),
       verticalScroll(verticalScrollBar()),
       horizontalScroll(horizontalScrollBar()),
       nScale(1),
@@ -39,6 +38,12 @@ void NCanvasView::setNeoScene(QGraphicsScene *scene)
 {
     nScene = scene;
     return;
+}
+
+void NCanvasView::openFile(const QString &FileName)
+{
+    static_cast<NCanvas *>(receiver)->nImage.load(FileName);
+    static_cast<NCanvas *>(receiver)->update();
 }
 
 void NCanvasView::tabletEvent(QTabletEvent *event)

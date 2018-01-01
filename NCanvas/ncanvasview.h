@@ -10,7 +10,7 @@ class NCanvasScene;
 class QScrollBar;
 class QScrollArea;
 
-class NCanvasView : public QObject, public QGraphicsView
+class NCanvasView : public QGraphicsView
 {
 public:
     NCanvasView(QWidget *parent = nullptr);
@@ -21,6 +21,9 @@ protected:
     void tabletEvent(QTabletEvent *event) override;
     void wheelEvent(QWheelEvent *event) override;
     void keyPressEvent(QKeyEvent *event) override;
+
+public slots:
+    void openFile(const QString &FileName);
 
 public:
     QScrollBar *verticalScroll;

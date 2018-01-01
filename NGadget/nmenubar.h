@@ -48,11 +48,20 @@ public:
         QAction *TabletTest;
     }NHelp;
 
+private slots:
+    void getFileName();
+
+signals:
+    void sendFileName(const QString &file);
+
 private:
     void setupSelf();
     void setupFile();
     void setupEdit();
     void setupHelp();
+
+    void setupConnection();
+
 };
 
 #endif // NMENUBAR_H

@@ -1,6 +1,7 @@
 #include "nmenubar.h"
 #include <QMenu>
 #include <QAction>
+#include <QFileDialog>
 
 NMenuBar::NMenuBar(QWidget *parent)
     : QMenuBar(parent),
@@ -20,6 +21,7 @@ void NMenuBar::setupSelf()
     setupFile();
     setupEdit();
     setupHelp();
+    setupConnection();
 }
 
 void NMenuBar::setupFile()
@@ -59,4 +61,15 @@ void NMenuBar::setupHelp()
     nHelp->addAction(NHelp.About);
     nHelp->addSeparator();
     nHelp->addAction(NHelp.TabletTest);
+}
+
+void NMenuBar::setupConnection()
+{
+    connect(NFile.Open, &QAction::triggered, this, &NMenuBar::getFileName);
+}
+
+void NMenuBar::getFileName()
+{
+    QString file = QFileDialog::getOpenFileName(this, tr("Open File"), "C:", tr("Image File(*png *jpg *jpeg)"));
+    emit sendFileName(file);
 }

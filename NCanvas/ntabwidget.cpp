@@ -14,6 +14,7 @@ NTabWidget::NTabWidget(QWidget *parent)
     QGraphicsProxyWidget *ass = nScene.addWidget(nCanvas);
     nView->setMirror(ass);
 
+
     nView->setScene(&nScene);
     nView->setBackgroundRole(QPalette::Dark);
     nView->setAlignment(Qt::AlignCenter);
