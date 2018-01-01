@@ -8,7 +8,8 @@ NMenuBar::NMenuBar(QWidget *parent)
     : QMenuBar(parent),
       nFile(new QMenu(tr("&File"), this)),
       nEdit(new QMenu(tr("&Edit"), this)),
-      nHelp(new QMenu(tr("&Help"), this))
+      nHelp(new QMenu(tr("&Help"), this)),
+      nOption(new QMenu(tr("&Option"), this))
 {
     setupSelf();
 }
@@ -17,21 +18,28 @@ void NMenuBar::setupSelf()
 {
     addMenu(nFile);
     addMenu(nEdit);
+    addMenu(nOption);
     addMenu(nHelp);
 
     setupFile();
     setupEdit();
+    setupOption();
     setupHelp();
     setupConnection();
 }
 
 void NMenuBar::setupFile()
 {
+    NFile.New = new QAction(tr("&New"));
+    NFile.New->setShortcut(tr("Ctrl+N"));
     NFile.Open = new QAction(tr("&Open"));
+    NFile.Open->setShortcut(QKeySequence("Ctrl+O"));
     NFile.Save = new QAction(tr("&Save"));
+    NFile.Save->setShortcut(QKeySequence("Ctrl+S"));
     NFile.SaveAs = new QMenu(tr("Save As"));
     NFile.Close = new QAction(tr("&Exit"));
 
+    nFile->addAction(NFile.New);
     nFile->addAction(NFile.Open);
     nFile->addAction(NFile.Save);
     nFile->addSeparator();
@@ -51,7 +59,20 @@ void NMenuBar::setupFile()
 
 void NMenuBar::setupEdit()
 {
+    NEdit.Undo = new QAction(tr("&Undo"));
+    NEdit.Redo = new QAction(tr("&Redo"));
 
+    nEdit->addAction(NEdit.Undo);
+    NEdit.Undo->setShortcut(QKeySequence(tr("Ctrl+U")));
+    nEdit->addAction(NEdit.Redo);
+    NEdit.Redo->setShortcut(QKeySequence(tr("Ctrl+Y")));
+}
+
+void NMenuBar::setupOption()
+{
+    NOption.Settings = new QAction(tr("&Settings"));
+
+    nOption->addAction(NOption.Settings);
 }
 
 void NMenuBar::setupHelp()

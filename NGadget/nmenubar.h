@@ -18,10 +18,12 @@ public:
 public:
     QMenu *nFile;
     QMenu *nEdit;
+    QMenu *nOption;
     QMenu *nHelp;
 
     struct FILE
     {
+        QAction *New;
         QAction *Open;
         QAction *Save;
         QMenu *SaveAs;
@@ -41,6 +43,11 @@ public:
         QAction *Undo;
         QAction *Redo;
     }NEdit;
+
+    struct OPTION
+    {
+        QAction *Settings;
+    }NOption;
 
     struct HELP
     {
@@ -62,6 +69,7 @@ private:
     void setupSelf();
     void setupFile();
     void setupEdit();
+    void setupOption();
     void setupHelp();
 
     void setupConnection();

@@ -30,7 +30,7 @@ NMainWindow::NMainWindow(QWidget *parent)
     neoPrototype->setAllowedAreas(Qt::LeftDockWidgetArea);
     neoPrototype->setMinimumWidth(300);
 
-    neoTabWidget->nCanvas->setMessage(neoStatusBar->nStatusMessage);
+//    neoTabWidget->nCanvas->setMessage(neoStatusBar->nStatusMessage);
 }
 
 NMainWindow::~NMainWindow()
@@ -54,8 +54,9 @@ void NMainWindow::initConnection()
     connect(neoMenuBar->NHelp.About, &QAction::triggered, neoAbout, &NAbout::show);
     connect(neoMenuBar->NHelp.TabletTest, &QAction::triggered, neoTabletTest, &NTabletTest::show);
 
-    connect(neoMenuBar, &NMenuBar::sendFileName, neoTabWidget->nView, &NCanvasView::openFile);
-    connect(neoMenuBar, &NMenuBar::sendSaveFileName, neoTabWidget->nView, &NCanvasView::saveFile);
+    connect(neoMenuBar->NFile.New, &QAction::triggered, neoTabWidget, &NTabWidget::newCanvas);
+//    connect(neoMenuBar, &NMenuBar::sendFileName, neoTabWidget->nView, &NCanvasView::openFile);
+//    connect(neoMenuBar, &NMenuBar::sendSaveFileName, neoTabWidget->nView, &NCanvasView::saveFile);
 
 //    connect(neoTabWidget->nCanvas, &NCanvas::tabletStatusChanged, neoStatusBar, &NStatusBar::changeStatus);
 }
