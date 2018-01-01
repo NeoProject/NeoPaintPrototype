@@ -50,9 +50,13 @@ public:
 
 private slots:
     void getFileName();
+    void getSaveFileName_PNG();
+    void getSaveFileName_JPG();
+    void getSaveFileName_JPEG();
 
 signals:
     void sendFileName(const QString &file);
+    void sendSaveFileName(const QString &file);
 
 private:
     void setupSelf();

@@ -2,6 +2,7 @@
 #include <QMenu>
 #include <QAction>
 #include <QFileDialog>
+#include <QDebug>
 
 NMenuBar::NMenuBar(QWidget *parent)
     : QMenuBar(parent),
@@ -66,10 +67,30 @@ void NMenuBar::setupHelp()
 void NMenuBar::setupConnection()
 {
     connect(NFile.Open, &QAction::triggered, this, &NMenuBar::getFileName);
+    connect(NFile.SaveAsMenu.SaveAsPng, &QAction::triggered, this, &NMenuBar::getSaveFileName_PNG);
+    connect(NFile.SaveAsMenu.SaveAsJpg, &QAction::triggered, this, &NMenuBar::getSaveFileName_JPG);
+    connect(NFile.SaveAsMenu.SaveAsJpeg, &QAction::triggered, this, &NMenuBar::getSaveFileName_JPEG);
 }
 
 void NMenuBar::getFileName()
 {
     QString file = QFileDialog::getOpenFileName(this, tr("Open File"), "C:", tr("Image File(*png *jpg *jpeg)"));
     emit sendFileName(file);
+}
+
+void NMenuBar::getSaveFileName_PNG()
+{
+    QString file = QFileDialog::getSaveFileName(this, tr("Save as PNG"), "C:", tr("Image File(*png)"));
+//    qDebug()<< file<< endl;
+    emit sendSaveFileName(file);
+}
+void NMenuBar::getSaveFileName_JPG()
+{
+    QString file = QFileDialog::getSaveFileName(this, tr("Save as JPG"), "C:", tr("Image File(*jpg)"));
+    emit sendSaveFileName(file);
+}
+void NMenuBar::getSaveFileName_JPEG()
+{
+    QString file = QFileDialog::getSaveFileName(this, tr("Save as JPEG"), "C:", tr("Image File(*jpeg)"));
+    emit sendSaveFileName(file);
 }

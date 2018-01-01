@@ -24,6 +24,7 @@ protected:
 
 public slots:
     void openFile(const QString &FileName);
+    void saveFile(const QString &FileName);
 
 public:
     QScrollBar *verticalScroll;

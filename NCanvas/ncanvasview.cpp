@@ -46,6 +46,12 @@ void NCanvasView::openFile(const QString &FileName)
     static_cast<NCanvas *>(receiver)->update();
 }
 
+void NCanvasView::saveFile(const QString &FileName)
+{
+    qDebug()<< FileName<< endl;
+    static_cast<NCanvas *>(receiver)->nImage.save(FileName);
+}
+
 void NCanvasView::tabletEvent(QTabletEvent *event)
 {
     QPointF scenePos = mapToScene(event->pos());

@@ -53,7 +53,9 @@ void NMainWindow::initConnection()
 
     connect(neoMenuBar->NHelp.About, &QAction::triggered, neoAbout, &NAbout::show);
     connect(neoMenuBar->NHelp.TabletTest, &QAction::triggered, neoTabletTest, &NTabletTest::show);
+
     connect(neoMenuBar, &NMenuBar::sendFileName, neoTabWidget->nView, &NCanvasView::openFile);
+    connect(neoMenuBar, &NMenuBar::sendSaveFileName, neoTabWidget->nView, &NCanvasView::saveFile);
 
 //    connect(neoTabWidget->nCanvas, &NCanvas::tabletStatusChanged, neoStatusBar, &NStatusBar::changeStatus);
 }
